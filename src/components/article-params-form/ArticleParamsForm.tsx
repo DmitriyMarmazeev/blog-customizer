@@ -27,8 +27,8 @@ interface ArticleParamsFormProps {
 
 export const ArticleParamsForm = ({setArticleState}: ArticleParamsFormProps) => {
 	const [open, setOpen] = useState(false);
- 	const [fontFamily, setFontFamily] = useState(defaultArticleState.fontFamilyOption);
- 	const [fontSize, setFontSize] = useState(defaultArticleState.fontSizeOption);
+ 	const [fontFamilyOption, setFontFamily] = useState(defaultArticleState.fontFamilyOption);
+ 	const [fontSizeOption, setFontSize] = useState(defaultArticleState.fontSizeOption);
  	const [fontColor, setFontColor] = useState(defaultArticleState.fontColor);
  	const [backgroundColor, setBackgroundColor] = useState(defaultArticleState.backgroundColor);
  	const [contentWidth, setContentWidth] = useState(defaultArticleState.contentWidth);
@@ -36,11 +36,11 @@ export const ArticleParamsForm = ({setArticleState}: ArticleParamsFormProps) => 
  	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
  		e.preventDefault();
  		setArticleState({
- 			fontFamilyOption: fontFamily,
+ 			fontFamilyOption,
  			fontColor,
  			backgroundColor,
  			contentWidth,
- 			fontSizeOption: fontSize,
+ 			fontSizeOption,
  		});
  	};
  
@@ -84,7 +84,7 @@ export const ArticleParamsForm = ({setArticleState}: ArticleParamsFormProps) => 
 
 					<Select
 						title="Шрифт"
-						selected={fontFamily}
+						selected={fontFamilyOption}
 						options={fontFamilyOptions}
 						onChange={setFontFamily}
 					/>
@@ -92,7 +92,7 @@ export const ArticleParamsForm = ({setArticleState}: ArticleParamsFormProps) => 
 					<RadioGroup
 						name="fontSize"
 						options={fontSizeOptions}
-						selected={fontSize}
+						selected={fontSizeOption}
 						onChange={setFontSize}
 						title="Размер шрифта"
 					/>
